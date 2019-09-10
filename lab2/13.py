@@ -48,6 +48,11 @@ i=0
 turtle.width(5)
 turtle.color('red')
 turtle.circle(N/(4*math.pi), 180)
+turtle.penup()
+turtle.goto(0,0)
+turtle.pendown()
+turtle.color('black')
+turtle.forward (30)
 
 
 
