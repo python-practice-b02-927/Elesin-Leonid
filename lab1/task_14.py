@@ -13,16 +13,8 @@ def fill_upper():
 	fill_cell()
 	move_down()
 
-def fill_both():
-	move_up()
-	fill_cell()
-	move_down()
-	move_down()
-	fill_cell()
-	move_up()
 
-def fill_fill():
-	fill_cell()
+
 
 
 def fill_upper_and_lower_cells():
@@ -31,9 +23,10 @@ def fill_upper_and_lower_cells():
 	if not wall_is_beneath() and wall_is_above():
 		fill_lower()
 	if not wall_is_beneath() and not wall_is_above():
-		fill_both()
+		fill_upper()
+		fill_lower()
 	if wall_is_beneath() and wall_is_above():
-		fill_fill()
+		fill_cell()
 
 
 @task
