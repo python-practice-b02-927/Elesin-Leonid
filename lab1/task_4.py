@@ -11,7 +11,7 @@ def task_3_3():
         move_down()
     elif not wall_is_on_the_right():
         move_right()
-    elif not wall_is_on_the_left():
+    else:
         move_left()
 
 
