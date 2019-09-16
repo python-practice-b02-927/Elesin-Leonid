@@ -15,45 +15,37 @@ def task_9_3():
     k=1
     while not wall_is_beneath():
         move_down()
-        i=i+1
+        i+=1
     while not wall_is_above():
         move_up()
     while True:
     
-        while k<i:
+        for  k in range (i-1):
             move_down()
-            k=k+1
             if b<i-2:
                 fill_cell()
-                b=b+1
+                b+=1
         b=0
-        k=1
-        while k<i:
+        for k in range (i-1):
             move_right()
-            k=k+1
             if b<i-2:
                 fill_cell()
-                b=b+1
+                b+=1
         b=0
-        k=1
-        while k<i:
+        for k in range(i-1):
             move_up()
-            k=k+1
             if b<i-2:
                 fill_cell()
-                b=b+1
+                b+=1
         b=0
-        k=1
-        while k<i:
+        for k in range (i-1):
             move_left()
-            k=k+1
             if b<i-2:
                 fill_cell()
-                b=b+1
+                b+=1
         b=0
-        k=1
         
-        i=i-2
+        i-=2
         if i==1:
             break
         move_down()
