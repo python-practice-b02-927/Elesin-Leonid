@@ -16,25 +16,21 @@ def krest():
     move_down()
     fill_cell()
 def polosa():
-    i=0
     move_down()
     krest()
-    while i<9:
+    for i in range(9):
         move_right(n=2)
         krest()
-        i=i+1
     while not wall_is_on_the_left():
         move_left()
     move_up()
 
 @task(delay=0.02)
 def task_2_4():
-    k=0
     polosa()
-    while k<4:
+    for k in range(4):
         move_down(n=4)
         polosa()
-        k=k+1
     
 
 
