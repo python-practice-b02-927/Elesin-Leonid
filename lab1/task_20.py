@@ -5,17 +5,17 @@ from pyrob.api import *
 def stroka():
     x=0
     
-    while x<27:
+    for x in range(27):
         move_right()
         fill_cell()
-        x=x+1
+
     move_down()
     fill_cell()
     x=0
-    while x<26:
+    for x in range (26):
         move_left()
         fill_cell()
-        x=x+1
+
     move_left()
     move_down()
 
@@ -23,9 +23,8 @@ def stroka():
 @task(delay=0.05)
 def task_4_3():
     b=0
-    while b<6:
+    for b in range(6):
        stroka()
-       b=b+1
     move_right()
  
     
@@ -34,3 +33,4 @@ def task_4_3():
 
 if __name__ == '__main__':
     run_tasks()
+
