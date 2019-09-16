@@ -2,19 +2,21 @@
 
 from pyrob.api import *
 
-def krest():
+
+def krest():    
+    fill_cell()
+    move_down()
+    move_right()
+    fill_cell()
+    move_up()
+    fill_cell()
+    move_up()
+    fill_cell()
+    move_right()
+    move_down()
+    fill_cell()
     
-    fill_cell()
-    move_down()
-    move_right()
-    fill_cell()
-    move_up()
-    fill_cell()
-    move_up()
-    fill_cell()
-    move_right()
-    move_down()
-    fill_cell()
+    
 def polosa():
     move_down()
     krest()
@@ -25,6 +27,7 @@ def polosa():
         move_left()
     move_up()
 
+    
 @task(delay=0.02)
 def task_2_4():
     polosa()
