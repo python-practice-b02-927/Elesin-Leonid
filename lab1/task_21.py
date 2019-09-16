@@ -18,9 +18,7 @@ def task_4_11():
             move_up()
             
         move_left()
-        i=0
-        b=0
-        z=z+1
+        z+=1
     move_down()
     move_right()
         
