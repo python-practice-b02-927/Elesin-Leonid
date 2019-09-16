@@ -9,7 +9,7 @@ def task_7_6():
     while not wall_is_on_the_right():
         move_right()
         if cell_is_filled():
-            i=i+1
+            i+=1
             if i==5:
                 break
             
