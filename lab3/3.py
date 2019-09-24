@@ -2,7 +2,8 @@ import graphics as gr
 
 
 def draw_body_and_tail(win):
-    pass
+    """draw body and tail"""
+    
 
 
 def draw_head(win):
