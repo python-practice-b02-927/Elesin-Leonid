@@ -15,7 +15,9 @@ def draw_birds(win):
 
 
 def draw_sun(win):
-    pass
+    sun = gr.Circle(gr.Point(450, 180), 70)
+    sun.setFill('yellow')
+    sun.draw(win)
 
 
 def draw_background(win):
@@ -38,6 +40,7 @@ def draw_background(win):
 def main(win):
     """Draw picture"""
     draw_background(win)
+    draw_sun(win)
 
     
 w = gr.GraphWin('pic8_1', 900, 900)
