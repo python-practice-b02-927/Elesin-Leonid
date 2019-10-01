@@ -7,7 +7,23 @@ def draw_(win):
 
 
 def draw_mountains(win):
-    pass
+    mountain_above = gr.Polygon(gr.Point(20, 390), gr.Point(900, 270),
+                                gr.Point(795, 225), gr.Point(750, 250),
+                                gr.Point(700, 210 ),gr.Point(650, 220),
+                                gr.Point(580,140),gr.Point(570,143),
+                                gr.Point(545,180),gr.Point(490,257),
+                                gr.Point(454,258),gr.Point(424,283),
+                                gr.Point(388,266),gr.Point(352,343),
+                                gr.Point(316,312),gr.Point(256,344),
+                                gr.Point(149,264),gr.Point(136,238),
+                                gr.Point(117,224),gr.Point(98,313),
+                                gr.Point(88,328),gr.Point(42,345))
+                                                                                                                                                                                                                                                                                                                                                                                                                                             
+    mountain_above.setFill ('orange')
+    mountain_above.setOutline ('orange')
+    mountain_above.draw(win)
+    
+    
 
 
 def draw_birds(win):
@@ -15,7 +31,8 @@ def draw_birds(win):
 
 
 def draw_sun(win):
-    sun = gr.Circle(gr.Point(450, 180), 70)
+    sun = gr.Circle(gr.Point(450, 180), 50)
+    sun.setOutline('yellow')
     sun.setFill('yellow')
     sun.draw(win)
 
@@ -23,13 +40,17 @@ def draw_sun(win):
 def draw_background(win):
     """Draws wall and floor"""
     sky_above = gr.Rectangle(gr.Point(0, 0), gr.Point(900, 180))
+    sky_above.setOutline('burlywood1')
     sky_above.setFill('burlywood1')
     sky_beneath = gr.Rectangle(gr.Point(0, 180), gr.Point(900, 360))
     sky_beneath.setFill('pink')
+    sky_beneath.setOutline('pink')
     sand = gr.Rectangle(gr.Point(0, 360), gr.Point(900, 540))
     sand.setFill ('LightGoldenrod1')
+    sand.setOutline('LightGoldenrod1')
     abyss= gr.Rectangle(gr.Point(0, 540), gr.Point(900, 900))
     abyss.setFill ('thistle')
+    abyss.setOutline('thistle')
     sky_above.draw(win)
     sky_beneath.draw(win)
     sand.draw(win)
@@ -41,6 +62,7 @@ def main(win):
     """Draw picture"""
     draw_background(win)
     draw_sun(win)
+    draw_mountains(win)
 
     
 w = gr.GraphWin('pic8_1', 900, 900)
