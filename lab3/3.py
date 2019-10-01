@@ -1,7 +1,11 @@
 import graphics as gr
 
-    
+
+w = gr.GraphWin('pic5_2', 900, 900)
+
+
 def draw_mountain_above(win):
+    """Draws mountain on the top"""
     mountain_above = gr.Polygon(gr.Point(20, 390), gr.Point(900, 270),
                                 gr.Point(795, 225), gr.Point(750, 250),
                                 gr.Point(700, 210 ),gr.Point(650, 220),
@@ -19,6 +23,7 @@ def draw_mountain_above(win):
 
 
 def draw_mountain_at_the_middle(win):
+    """Draws mountain at the middle"""
     mountain_at_the_middle = gr.Polygon(gr.Point(0,416), gr.Point(31,415),
                                         gr.Point(48,432), gr.Point(133,500),
                                         gr.Point(179,444), gr.Point(228,471),
@@ -29,7 +34,7 @@ def draw_mountain_at_the_middle(win):
                                         gr.Point(768,375), gr.Point(812,394),
                                         gr.Point(900,303), gr.Point(900,540),
                                         gr.Point(0,540))
-    mountain_top=gr.Oval(gr.Point(50, 350), gr.Point(140, 540))
+    mountain_top = gr.Oval(gr.Point(50, 350), gr.Point(140, 540))
     mountain_top.setFill (gr.color_rgb(172,67,52))
     mountain_top.setOutline(gr.color_rgb(172,67,52))
     mountain_top_2=gr.Oval (gr.Point(439,357), gr.Point(525,495))
@@ -43,6 +48,7 @@ def draw_mountain_at_the_middle(win):
 
 
 def draw_mountain_beneath(win):
+    """Draws mountain on the bottom"""
     mountain_beneath = gr.Polygon(gr.Point(0,402), gr.Point(84,432),
                                   gr.Point(170,579), gr.Point(278,837),
                                   gr.Point(338,863), gr.Point(464,871),
@@ -57,21 +63,22 @@ def draw_mountain_beneath(win):
                                     
                                            
 def draw_birds(win):
-    bird1=gr.Polygon(gr.Point(348,326),gr.Point(322,305),
+    """Draws birds"""
+    bird1 = gr.Polygon(gr.Point(348,326),gr.Point(322,305),
                      gr.Point(347,315),gr.Point(374,305))
-    bird2=gr.Polygon(gr.Point(426,338),gr.Point(404,315),
+    bird2 = gr.Polygon(gr.Point(426,338),gr.Point(404,315),
                      gr.Point(430,328),gr.Point(457,314))
-    bird3=gr.Polygon(gr.Point(426,382),gr.Point(402,360),
+    bird3 = gr.Polygon(gr.Point(426,382),gr.Point(402,360),
                      gr.Point(428,372),gr.Point(455,360))
-    bird4=gr.Polygon(gr.Point(358,421),gr.Point(334,398),
+    bird4 = gr.Polygon(gr.Point(358,421),gr.Point(334,398),
                      gr.Point(360,411),gr.Point(385,397))
-    bird5=gr.Polygon(gr.Point(564,611),gr.Point(539,585),
+    bird5 = gr.Polygon(gr.Point(564,611),gr.Point(539,585),
                      gr.Point(567,601),gr.Point(595,588))
-    bird6=gr.Polygon(gr.Point(614,676),gr.Point(590,656),
+    bird6 = gr.Polygon(gr.Point(614,676),gr.Point(590,656),
                      gr.Point(614,666),gr.Point(641,654))
-    bird7=gr.Polygon(gr.Point(716,652),gr.Point(696,633),
+    bird7 = gr.Polygon(gr.Point(716,652),gr.Point(696,633),
                      gr.Point(715,641),gr.Point(743,632))
-    bird8=gr.Polygon(gr.Point(701,722),gr.Point(664,688),
+    bird8 = gr.Polygon(gr.Point(701,722),gr.Point(664,688),
                      gr.Point(701,704),gr.Point(740,686))
     bird1.setFill(gr.color_rgb(66, 33, 11))
     bird1.setOutline(gr.color_rgb(66, 33, 11))
@@ -100,6 +107,7 @@ def draw_birds(win):
 
 
 def draw_sun(win):
+    """Draws sun"""
     sun = gr.Circle(gr.Point(450, 180), 50)
     sun.setOutline(gr.color_rgb(252,238,33))
     sun.setFill(gr.color_rgb(252,238,33))
@@ -107,7 +115,7 @@ def draw_sun(win):
 
 
 def draw_background(win):
-    """Draws wall and floor"""
+    """Draws sky, sand and abyss"""
     sky_above = gr.Rectangle(gr.Point(0, 0), gr.Point(900, 180))
     sky_above.setOutline(gr.color_rgb(254,213,162))
     sky_above.setFill(gr.color_rgb(254,213,162))
@@ -127,7 +135,7 @@ def draw_background(win):
     
     
 def main(win):
-    """Draw picture"""
+    """Draws picture"""
     draw_background(win)
     draw_sun(win)
     draw_mountain_at_the_middle(win)
@@ -136,8 +144,6 @@ def main(win):
     draw_mountain_beneath(win)
     draw_birds(win)
 
-    
-w = gr.GraphWin('pic5_2', 900, 900)
 
 main(w)
 w.getMouse()
