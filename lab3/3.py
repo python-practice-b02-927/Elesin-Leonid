@@ -13,7 +13,6 @@ def draw_mountain_above(win):
                                 gr.Point(149,264),gr.Point(136,238),
                                 gr.Point(117,224),gr.Point(98,313),
                                 gr.Point(88,328),gr.Point(42,345))
-                                                                                                                                                                                                                                                                                                                                                                                                                                             
     mountain_above.setFill ('orange')
     mountain_above.setOutline ('orange')
     mountain_above.draw(win)
@@ -30,10 +29,17 @@ def draw_mountain_at_the_middle(win):
                                         gr.Point(768,375), gr.Point(812,394),
                                         gr.Point(900,303), gr.Point(900,540),
                                         gr.Point(0,540))
+    mountain_top=gr.Oval(gr.Point(50, 350), gr.Point(140, 540))
+    mountain_top.setFill ('red')
+    mountain_top.setOutline('red')
+    mountain_top_2=gr.Oval (gr.Point(439,357), gr.Point(525,495))
+    mountain_top_2.setFill('red')
+    mountain_top_2.setOutline('red')
     mountain_at_the_middle.setFill ('red')
     mountain_at_the_middle.setOutline ('red')
     mountain_at_the_middle.draw(win)
-    
+    mountain_top.draw(win)
+    mountain_top_2.draw(win)
                                         
                                         
     
@@ -76,6 +82,7 @@ def main(win):
     """Draw picture"""
     draw_background(win)
     draw_sun(win)
+    draw_mountain_at_the_middle(win)
     draw_mountain_above(win)
     draw_mountain_at_the_middle(win)
 
