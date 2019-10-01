@@ -10,8 +10,8 @@ def draw_mountain_above(win):
                                 gr.Point(454,258),gr.Point(424,283),
                                 gr.Point(388,266),gr.Point(352,343),
                                 gr.Point(316,312),gr.Point(256,344),
-                                gr.Point(149,264),gr.Point(136,238),
-                                gr.Point(117,224),gr.Point(98,313),
+                                gr.Point(149,200),gr.Point(136,180),
+                                gr.Point(117,170),gr.Point(98,313),
                                 gr.Point(88,328),gr.Point(42,345))
     mountain_above.setFill (gr.color_rgb(252,152,49))
     mountain_above.setOutline (gr.color_rgb(252,152,49))
@@ -55,8 +55,7 @@ def draw_mountain_beneath(win):
     mountain_beneath.setOutline (gr.color_rgb(48,16,38))
     mountain_beneath.draw(win)
                                     
-                                        
-    
+                                           
 def draw_birds(win):
     bird1=gr.Polygon(gr.Point(348,326),gr.Point(322,305),
                      gr.Point(347,315),gr.Point(374,305))
@@ -98,7 +97,6 @@ def draw_birds(win):
     bird6.draw(win)
     bird7.draw(win)
     bird8.draw(win)
-    
 
 
 def draw_sun(win):
@@ -127,7 +125,6 @@ def draw_background(win):
     sand.draw(win)
     abyss.draw(win)
     
-
     
 def main(win):
     """Draw picture"""
