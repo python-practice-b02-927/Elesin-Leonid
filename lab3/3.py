@@ -1,12 +1,7 @@
 import graphics as gr
 
-
-def draw_(win):
-    """draw body and tail"""
     
-
-
-def draw_mountains(win):
+def draw_mountain_above(win):
     mountain_above = gr.Polygon(gr.Point(20, 390), gr.Point(900, 270),
                                 gr.Point(795, 225), gr.Point(750, 250),
                                 gr.Point(700, 210 ),gr.Point(650, 220),
@@ -22,6 +17,25 @@ def draw_mountains(win):
     mountain_above.setFill ('orange')
     mountain_above.setOutline ('orange')
     mountain_above.draw(win)
+
+
+def draw_mountain_at_the_middle(win):
+    mountain_at_the_middle = gr.Polygon(gr.Point(0,416), gr.Point(31,415),
+                                        gr.Point(48,432), gr.Point(133,500),
+                                        gr.Point(179,444), gr.Point(228,471),
+                                        gr.Point(243,390), gr.Point(295,406),
+                                        gr.Point(327,450), gr.Point(438,428),
+                                        gr.Point(498,362), gr.Point(632,432),
+                                        gr.Point(687,383), gr.Point(723,405),
+                                        gr.Point(768,375), gr.Point(812,394),
+                                        gr.Point(900,303), gr.Point(900,540),
+                                        gr.Point(0,540))
+    mountain_at_the_middle.setFill ('red')
+    mountain_at_the_middle.setOutline ('red')
+    mountain_at_the_middle.draw(win)
+    
+                                        
+                                        
     
     
 
@@ -62,7 +76,8 @@ def main(win):
     """Draw picture"""
     draw_background(win)
     draw_sun(win)
-    draw_mountains(win)
+    draw_mountain_above(win)
+    draw_mountain_at_the_middle(win)
 
     
 w = gr.GraphWin('pic8_1', 900, 900)
