@@ -13,8 +13,8 @@ def draw_mountain_above(win):
                                 gr.Point(149,264),gr.Point(136,238),
                                 gr.Point(117,224),gr.Point(98,313),
                                 gr.Point(88,328),gr.Point(42,345))
-    mountain_above.setFill ('orange')
-    mountain_above.setOutline ('orange')
+    mountain_above.setFill (gr.color_rgb(252,152,49))
+    mountain_above.setOutline (gr.color_rgb(252,152,49))
     mountain_above.draw(win)
 
 
@@ -30,47 +30,59 @@ def draw_mountain_at_the_middle(win):
                                         gr.Point(900,303), gr.Point(900,540),
                                         gr.Point(0,540))
     mountain_top=gr.Oval(gr.Point(50, 350), gr.Point(140, 540))
-    mountain_top.setFill ('red')
-    mountain_top.setOutline('red')
+    mountain_top.setFill (gr.color_rgb(172,67,52))
+    mountain_top.setOutline(gr.color_rgb(172,67,52))
     mountain_top_2=gr.Oval (gr.Point(439,357), gr.Point(525,495))
-    mountain_top_2.setFill('red')
-    mountain_top_2.setOutline('red')
-    mountain_at_the_middle.setFill ('red')
-    mountain_at_the_middle.setOutline ('red')
+    mountain_top_2.setFill(gr.color_rgb(172,67,52))
+    mountain_top_2.setOutline(gr.color_rgb(172,67,52))
+    mountain_at_the_middle.setFill (gr.color_rgb(172,67,52))
+    mountain_at_the_middle.setOutline (gr.color_rgb(172,67,52))
     mountain_at_the_middle.draw(win)
     mountain_top.draw(win)
     mountain_top_2.draw(win)
-                                        
-                                        
-    
-    
 
 
+def draw_mountain_beneath(win):
+    mountain_beneath = gr.Polygon(gr.Point(0,402), gr.Point(84,432),
+                                  gr.Point(170,579), gr.Point(278,837),
+                                  gr.Point(338,863), gr.Point(464,871),
+                                  gr.Point(599,712), gr.Point(664,737),
+                                  gr.Point(720,769), gr.Point(764,777),
+                                  gr.Point(792,767), gr.Point(828,645),
+                                  gr.Point(857,584), gr.Point(900,518),
+                                  gr.Point(900,900), gr.Point(0,900))
+    mountain_beneath.setFill (gr.color_rgb(48,16,38))
+    mountain_beneath.setOutline (gr.color_rgb(48,16,38))
+    mountain_beneath.draw(win)
+                                    
+                                        
+    
+  
 def draw_birds(win):
     pass
 
 
 def draw_sun(win):
     sun = gr.Circle(gr.Point(450, 180), 50)
-    sun.setOutline('yellow')
-    sun.setFill('yellow')
+    sun.setOutline(gr.color_rgb(252,238,33))
+    sun.setFill(gr.color_rgb(252,238,33))
     sun.draw(win)
 
 
 def draw_background(win):
     """Draws wall and floor"""
     sky_above = gr.Rectangle(gr.Point(0, 0), gr.Point(900, 180))
-    sky_above.setOutline('burlywood1')
-    sky_above.setFill('burlywood1')
+    sky_above.setOutline(gr.color_rgb(254,213,162))
+    sky_above.setFill(gr.color_rgb(254,213,162))
     sky_beneath = gr.Rectangle(gr.Point(0, 180), gr.Point(900, 360))
-    sky_beneath.setFill('pink')
-    sky_beneath.setOutline('pink')
+    sky_beneath.setFill(gr.color_rgb(254,213,196))
+    sky_beneath.setOutline(gr.color_rgb(254,213,196))
     sand = gr.Rectangle(gr.Point(0, 360), gr.Point(900, 540))
-    sand.setFill ('LightGoldenrod1')
-    sand.setOutline('LightGoldenrod1')
+    sand.setFill (gr.color_rgb(254,213,148))
+    sand.setOutline(gr.color_rgb(254,213,148))
     abyss= gr.Rectangle(gr.Point(0, 540), gr.Point(900, 900))
-    abyss.setFill ('thistle')
-    abyss.setOutline('thistle')
+    abyss.setFill (gr.color_rgb(179,134,148))
+    abyss.setOutline(gr.color_rgb(179,134,148))
     sky_above.draw(win)
     sky_beneath.draw(win)
     sand.draw(win)
@@ -85,9 +97,10 @@ def main(win):
     draw_mountain_at_the_middle(win)
     draw_mountain_above(win)
     draw_mountain_at_the_middle(win)
+    draw_mountain_beneath(win)
 
     
-w = gr.GraphWin('pic8_1', 900, 900)
+w = gr.GraphWin('pic5_1', 900, 900)
 
 main(w)
 w.getMouse()
