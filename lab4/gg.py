@@ -5,7 +5,7 @@ root = Tk()
 root.geometry('900x900')
 
 """Creating label"""
-l = Label(root, bg='grey', fg='white', width=10, font=("impact", 44))
+l = Label(root, bg='black', fg='white', width=20)
 l.pack()
 
 
