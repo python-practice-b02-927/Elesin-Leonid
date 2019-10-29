@@ -3,6 +3,7 @@ from tkinter import mainloop
 import tkinter as tk
 import math
 import time
+points=0
 
 
 root = tk.Tk()
@@ -16,7 +17,7 @@ class ball():
     def __init__(self, x=40, y=450):
         self.x = x
         self.y = y
-        self.r = 10
+        self.r = 5
         self.vx = 0
         self.vy = 0
         self.color = choice(['blue', 'green', 'red', 'yellow'])
@@ -41,7 +42,8 @@ class ball():
     def move(self):
         self.x += self.vx
         self.y -= self.vy
-        self.vy += -1.2
+        self.vy += -3
+        
         if self.x>(800-self.r):
             self.vx=-self.vx
         if self.y>(600-self.r):
@@ -109,6 +111,9 @@ class gun():
         else:
             canv.itemconfig(self.id, fill='black')
 
+canv_points = canv.create_text(50, 50,
+                text = points, font=("impact", 44))
+
 
 class target_ver():
     def __init__(self):
@@ -118,10 +123,7 @@ class target_ver():
         self.id_points=canv.create_text(30,30,text=self.points,font='28')
         self.new_target()
       
-
-
     def new_target(self):
-    
         x=self.x=rnd(600,780)
         y=self.y=rnd(300,550)
         r=self.r=rnd(20,50)
@@ -131,20 +133,14 @@ class target_ver():
         canv.itemconfig(self.id,fill=color)
 
     def move(self):
-
         self.y+=self.uy
         canv.coords(self.id, self.x - self.r, self.y - self.r, self.x + self.r, self.y + self.r)
         if self.y>(600-self.r):
             self.uy=-self.uy
         if self.y<(self.r):
             self.uy=-self.uy
-    def hit(self, points=1):
-        
-        canv.coords(self.id, -10, -10, -10, -10)
-        self.points += points
-        canv.itemconfig(self.id_points, text=self.points)
 
-
+            
 class target_hor():
     def __init__(self):
         self.points=0
@@ -152,11 +148,8 @@ class target_hor():
         self.id=canv.create_oval(0,0,0,0)
         self.id_points=canv.create_text(30,30,text=self.points,font='28')
         self.new_target()
-      
-
 
     def new_target(self):
-    
         x=self.x=rnd(200,600)
         y=self.y=rnd(100,200)
         r=self.r=rnd(20,50)
@@ -166,18 +159,14 @@ class target_hor():
         canv.itemconfig(self.id,fill=color)
 
     def move(self):
-
         self.x+=self.ux
         canv.coords(self.id, self.x - self.r, self.y - self.r, self.x + self.r, self.y + self.r)
         if self.x>(800-self.r):
             self.ux=-self.ux
         if self.x<(self.r):
             self.ux=-self.ux
-    def hit(self, points=1):
-        
-        canv.coords(self.id, -10, -10, -10, -10)
-        self.points += points
-        canv.itemconfig(self.id_points, text=self.points)
+            
+    
 
 
 
@@ -188,7 +177,7 @@ class target_hor():
 
 t1 = target_ver()
 t2=target_hor ()
-screen1 = canv.create_text(400, 300, text='', font='28')
+
 g1 = gun()
 bullet = 0
 balls = []
@@ -205,6 +194,7 @@ def new_game(event=''):
     canv.bind('<Motion>', g1.targetting)
     z = 0.03
     t1.live = 1
+    t2.live=1
     while t1.live or t2.live:
         for i, b in enumerate(balls):
             b.move()
@@ -225,7 +215,7 @@ def new_game(event=''):
         g1.targetting()
         g1.power_up()
     time.sleep(0.7)
-    canv.itemconfig(screen1, text='')
+    canv.itemconfig(canv_points, text='')
     root.after(10, new_game)
     
 
