@@ -38,12 +38,10 @@ class ball():
                 self.x + self.r,
                 self.y + self.r
         )
-
     def move(self):
         self.x += self.vx
         self.y -= self.vy
         self.vy += -3
-        
         if self.x>(800-self.r):
             self.vx=-self.vx
         if self.y>(600-self.r):
@@ -111,8 +109,7 @@ class gun():
         else:
             canv.itemconfig(self.id, fill='black')
 
-canv_points = canv.create_text(50, 50,
-                text = points, font=("impact", 44))
+
 
 
 class target_ver():
@@ -177,10 +174,8 @@ class target_hor():
 
 t1 = target_ver()
 t2=target_hor ()
-
 g1 = gun()
-bullet = 0
-balls = []
+screen1 = canv.create_text(400, 300, text='', font='28')
 
 
 def new_game(event=''):
@@ -204,10 +199,11 @@ def new_game(event=''):
             if b.hittest(t2):
                 t2.live = 0
                 canv.coords(t2.id, 0, 0, 0, 0)
-        
+            b.live -= 0.01
+            if b.live <= 0:
+                canv.delete(b.id)
+          
             
-            
-                
         if t1.live==1:
             t1.move()
         if t2.live==1:
@@ -216,15 +212,15 @@ def new_game(event=''):
         time.sleep(0.03)
         g1.targetting()
         g1.power_up()
-
+    
+    canv.itemconfig(screen1, text='Вы уничтожили цели за ' + str(bullet) + ' выстрелов')
     for b in balls:
         canv.delete(b.id)
-      
-        
-                
+
+    canv.update()
     time.sleep(0.7)
-    canv.itemconfig(canv_points, text='')
-    root.after(10, new_game)
+    canv.itemconfig(screen1, text = '')
+    root.after(0,  new_game)
     
 
 
