@@ -196,16 +196,18 @@ def new_game(event=''):
     t1.live = 1
     t2.live=1
     while t1.live or t2.live:
-        for i, b in enumerate(balls):
+        for b in (balls):
             b.move()
             if b.hittest(t1):
                 t1.live = 0
-                canv.coords(t1.id, -10, -10, -10, -10)
+                canv.coords(t1.id, 0, 0, 0, 0)
             if b.hittest(t2):
                 t2.live = 0
-                canv.coords(t2.id, -10, -10, -10, -10)
-            if  t1.live==0 and t2.live==0:
-                canv.delete(b.id)
+                canv.coords(t2.id, 0, 0, 0, 0)
+        
+            
+            
+                
         if t1.live==1:
             t1.move()
         if t2.live==1:
@@ -214,6 +216,12 @@ def new_game(event=''):
         time.sleep(0.03)
         g1.targetting()
         g1.power_up()
+
+    for b in balls:
+        canv.delete(b.id)
+      
+        
+                
     time.sleep(0.7)
     canv.itemconfig(canv_points, text='')
     root.after(10, new_game)
