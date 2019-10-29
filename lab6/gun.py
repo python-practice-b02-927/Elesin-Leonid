@@ -1,4 +1,5 @@
 from random import randrange as rnd, choice
+from tkinter import mainloop
 import tkinter as tk
 import math
 import time
@@ -109,20 +110,21 @@ class gun():
             canv.itemconfig(self.id, fill='black')
 
 
-class target():
+class target_ver():
     def __init__(self):
         self.points=0
+        self.live=1
         self.id=canv.create_oval(0,0,0,0)
         self.id_points=canv.create_text(30,30,text=self.points,font='28')
         self.new_target()
-        self.live=1
+      
 
 
     def new_target(self):
-        
+    
         x=self.x=rnd(600,780)
         y=self.y=rnd(300,550)
-        r=self.r=rnd(2,50)
+        r=self.r=rnd(20,50)
         self.uy=rnd(-10,10)
         color=self.color='red'
         canv.coords(self.id,x-r,y-r,x+r,y+r)
@@ -142,13 +144,50 @@ class target():
         self.points += points
         canv.itemconfig(self.id_points, text=self.points)
 
+
+class target_hor():
+    def __init__(self):
+        self.points=0
+        self.live=1
+        self.id=canv.create_oval(0,0,0,0)
+        self.id_points=canv.create_text(30,30,text=self.points,font='28')
+        self.new_target()
+      
+
+
+    def new_target(self):
+    
+        x=self.x=rnd(200,600)
+        y=self.y=rnd(100,200)
+        r=self.r=rnd(20,50)
+        self.ux=rnd(-10,10)
+        color=self.color='red'
+        canv.coords(self.id,x-r,y-r,x+r,y+r)
+        canv.itemconfig(self.id,fill=color)
+
+    def move(self):
+
+        self.x+=self.ux
+        canv.coords(self.id, self.x - self.r, self.y - self.r, self.x + self.r, self.y + self.r)
+        if self.x>(800-self.r):
+            self.ux=-self.ux
+        if self.x<(self.r):
+            self.ux=-self.ux
+    def hit(self, points=1):
+        
+        canv.coords(self.id, -10, -10, -10, -10)
+        self.points += points
+        canv.itemconfig(self.id_points, text=self.points)
+
+
+
     
 
     
 
 
-t1 = target()
-t2=target ()
+t1 = target_ver()
+t2=target_hor ()
 screen1 = canv.create_text(400, 300, text='', font='28')
 g1 = gun()
 bullet = 0
@@ -157,6 +196,8 @@ balls = []
 
 def new_game(event=''):
     global gun, t1, screen1, balls, bullet
+    t1.new_target()
+    t2.new_target()
     bullet = 0
     balls = []
     canv.bind('<Button-1>', g1.fire2_start)
@@ -173,14 +214,22 @@ def new_game(event=''):
             if b.hittest(t2):
                 t2.live = 0
                 canv.coords(t2.id, -10, -10, -10, -10)
+            if  t1.live==0 and t2.live==0:
+                canv.delete(b.id)
         if t1.live==1:
             t1.move()
-        if t2.live == 1:
+        if t2.live==1:
             t2.move()
         canv.update()
         time.sleep(0.03)
         g1.targetting()
         g1.power_up()
+    time.sleep(0.7)
+    canv.itemconfig(screen1, text='')
+    root.after(10, new_game)
+    
+
+
 
 
 new_game()
