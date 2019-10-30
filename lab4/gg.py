@@ -36,7 +36,7 @@ def del_sqare():
             canv.delete(s['id'])
             del sqares[i]
 
-            
+        
 def new_ball():
     """Functions to create new balls"""
     b = {'x': rnd(100, 700), 'y': rnd(100, 500), 'r': rnd(30, 50),
@@ -58,7 +58,7 @@ def new_sqares():
     root.after(2000, new_sqares)
     root.after(4000, del_sqare)
 
-    
+
 def movement():
     """Function to move"""
     for b in balls:
