@@ -19,9 +19,11 @@ colors = ['red', 'orange', 'yellow', 'green', 'blue']
 scores = 0
 balls = []
 sqares = []
+name=input()
 
 
 """Function to delete after time"""
+
 def del_ball():
     for i,b in enumerate(balls):
         if i==0:
@@ -36,9 +38,6 @@ def del_sqare():
             del sqares[i]
     
             
-    
-    
-
 """Functions to create new balls"""
 
 
@@ -102,13 +101,13 @@ def click(event):
             del sqares[i]
             l['text'] = scores
 
-
-        
-
-
 new_ball()
 new_sqares()
 movement()
 canv.bind('<Button-1>', click)
 mainloop()
+my_file = open('Results.txt', 'a')
+my_file.write(name +' ' + str(scores) +'\n')
+my_file.close()
+
 
