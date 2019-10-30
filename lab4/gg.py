@@ -43,7 +43,7 @@ def del_sqare():
 
 
 def new_ball():
-    b = {'x': rnd(100, 700), 'y': rnd(100, 500), 'r': rnd(30, 50), 'vx':rnd(-1,1), 'vy':rnd(-1,1)}
+    b = {'x': rnd(100, 700), 'y': rnd(100, 500), 'r': rnd(30, 50), 'vx':rnd(-10,10), 'vy':rnd(-10,10)}
     b['id'] = canv.create_oval(b['x']-b['r'], b['y']-b['r'], b['x']+b['r'],
                                b['y']+b['r'], fill=choice(colors), width=0)
     
@@ -68,9 +68,14 @@ def new_sqares():
 
 def movement():
     for b in balls:
+        if (b['x']<b['r']) or b['x']>(900-b['r']):
+            b['vx']=-b['vx']
+        if (b['y']<b['r']) or b['y']>(900-b['r']):
+            b['vy']=-b['vy']
         canv.move(b['id'], b['vx'], b['vy'])
         b['x']+=b['vx']
         b['y']+=b['vy']
+        
     root.after(10, movement) 
         
         
