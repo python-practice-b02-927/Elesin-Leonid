@@ -15,25 +15,24 @@ canv.pack(fill=BOTH, expand=1)
 """Add colors to figures and set constants"""
 colors = ['red', 'orange', 'yellow', 'green', 'blue']
 scores = 0
+i = 0
 balls = []
 sqares = []
 name = input()
 
 
-def del_ball():
-    """Function to delete ball after time"""
-    for i, b in enumerate(balls):
-        if i == 0:
-            canv.delete(b['id'])
-            del balls[i]
+def del_ball(b):
+    """Function to delere ball after time"""
+    if b in balls:
+        canv.delete(balls[0]['id'])
+        balls.pop(0)
 
 
-def del_sqare():
+def del_sqare(s):
     """Function to delete sqare after time"""
-    for i, s in enumerate(sqares):
-        if i == 0:
-            canv.delete(s['id'])
-            del sqares[i]
+    if s in sqares:
+        canv.delete(sqares[0]['id'])
+        sqares.pop(0)
 
 
 def new_ball():
@@ -43,8 +42,8 @@ def new_ball():
     b['id'] = canv.create_oval(b['x']-b['r'], b['y']-b['r'], b['x']+b['r'],
                                b['y']+b['r'], fill=choice(colors), width=0)
     balls.append(b)
+    root.after(6000, del_ball, b)
     root.after(1000, new_ball)
-    root.after(5000, del_ball)
 
 
 def new_sqares():
@@ -54,8 +53,8 @@ def new_sqares():
                                     s['y']+s['r'], fill=choice(colors),
                                     width=0)
     sqares.append(s)
+    root.after(8000, del_sqare, s)
     root.after(2000, new_sqares)
-    root.after(4000, del_sqare)
 
 
 def movement():
@@ -68,7 +67,7 @@ def movement():
         canv.move(b['id'], b['vx'], b['vy'])
         b['x'] += b['vx']
         b['y'] += b['vy']
-    root.after(30, movement)
+    root.after(50, movement)
 
 
 def click(event):
@@ -79,14 +78,13 @@ def click(event):
            event.y)**2)**0.5 < b['r']:
             scores += 3
             canv.delete(b['id'])
-            del balls[i]
+            balls.pop(i)
             l['text'] = scores
     for i, s in enumerate(sqares):
-        if ((s['x'] + s['r']*0.5 - event.x)**2 +
-           (s['y'] + s['r']*0.5 - event.y)**2)**0.5 < s['r']*0.5:
+        if (abs(s['x'] - event.x) < s['r'] and abs(s['y'] - event.y) < s['r']):
             scores += 1
             canv.delete(s['id'])
-            del sqares[i]
+            sqares.pop(i)
             l['text'] = scores
 
 
