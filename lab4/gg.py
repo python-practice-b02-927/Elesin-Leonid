@@ -68,7 +68,7 @@ def movement():
         canv.move(b['id'], b['vx'], b['vy'])
         b['x'] += b['vx']
         b['y'] += b['vy']
-    root.after(10, movement)
+    root.after(30, movement)
 
 
 def click(event):
