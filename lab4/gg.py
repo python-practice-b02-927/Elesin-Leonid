@@ -67,11 +67,7 @@ def movement():
         canv.move(b['id'], b['vx'], b['vy'])
         b['x'] += b['vx']
         b['y'] += b['vy']
-<<<<<<< HEAD
-    root.after(50, movement)
-=======
     root.after(30, movement)
->>>>>>> bf6a347e27c8932b7fab930451e539f13f1193ee
 
 
 def click(event):
