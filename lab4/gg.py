@@ -13,19 +13,16 @@ l.pack()
 canv = Canvas(root, bg='white')
 canv.pack(fill=BOTH, expand=1)
 
-"""Add colors to figures"""
+"""Add colors to figures and set constants"""
 colors = ['red', 'orange', 'yellow', 'green', 'blue']
-
 scores = 0
 balls = []
 sqares = []
 name = input()
 
 
-"""Function to delete after time"""
-
-
 def del_ball():
+    """Function to delete ball after time"""
     for i, b in enumerate(balls):
         if i == 0:
             canv.delete(b['id'])
@@ -33,16 +30,15 @@ def del_ball():
 
 
 def del_sqare():
+    """Function to delete sqare after time"""
     for i, s in enumerate(sqares):
         if i == 0:
             canv.delete(s['id'])
             del sqares[i]
 
-
-"""Functions to create new balls"""
-
-
+            
 def new_ball():
+    """Functions to create new balls"""
     b = {'x': rnd(100, 700), 'y': rnd(100, 500), 'r': rnd(30, 50),
          'vx': rnd(-10, 10), 'vy': rnd(-10, 10)}
     b['id'] = canv.create_oval(b['x']-b['r'], b['y']-b['r'], b['x']+b['r'],
@@ -53,6 +49,7 @@ def new_ball():
 
 
 def new_sqares():
+    """Function to create new sqares"""
     s = {'x': rnd(50, 850), 'y': rnd(50, 850), 'r': rnd(50, 100)}
     s['id'] = canv.create_rectangle(s['x'], s['y'], s['x']+s['r'],
                                     s['y']+s['r'], fill=choice(colors),
@@ -61,10 +58,9 @@ def new_sqares():
     root.after(2000, new_sqares)
     root.after(4000, del_sqare)
 
-"""Function to move"""
-
-
+    
 def movement():
+    """Function to move"""
     for b in balls:
         if (b['x'] < b['r']) or b['x'] > (900-b['r']):
             b['vx'] = -b['vx']
@@ -75,10 +71,9 @@ def movement():
         b['y'] += b['vy']
     root.after(10, movement)
 
-"""Function to click"""
-
 
 def click(event):
+    """Function to click"""
     global scores
     for i, b in enumerate(balls):
         if ((b['x'] - event.x)**2 + (b['y'] -
