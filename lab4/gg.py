@@ -8,7 +8,6 @@ root.geometry('900x900')
 l = Label(root, bg='black', fg='white', width=20)
 l.pack()
 
-
 """Creating canvas"""
 canv = Canvas(root, bg='white')
 canv.pack(fill=BOTH, expand=1)
