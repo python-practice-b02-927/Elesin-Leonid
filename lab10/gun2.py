@@ -108,6 +108,10 @@ class Ball(Agent):
         self.y -= self.vy
         self.vx -= 0.1
         self.vy -= 1
+        if self.x<20 or self.x>780:
+            self.vx=-self.vx
+        if self.y<20 or self.y>580:
+            self.vy=-self.vy
         self.set_coords()
         targets_hit = self.hit_targets()
         if targets_hit:
@@ -310,9 +314,9 @@ class Target(Agent):
         super().__init__()
         self.job = job_init
 
-        x = self.x = rnd(600, 780) if x is None else x
-        y = self.y = rnd(300, 550) if y is None else y
-        r = self.r = rnd(2, 50) if r is None else r
+        x = self.x = rnd(100, 700) if x is None else x
+        y = self.y = rnd(50, 550) if y is None else y
+        r = self.r = rnd(10, 50) if r is None else r
         color = self.color = 'red' if color is None else color
 
         self.canvas = canvas
