@@ -108,10 +108,10 @@ class Ball(Agent):
         self.y -= self.vy
         self.vx -= 0.1
         self.vy -= 1
-        if self.x<20 or self.x>780:
-            self.vx=-self.vx
-        if self.y<20 or self.y>580:
-            self.vy=-self.vy
+        if self.x < 20 or self.x > 780:
+            self.vx = -self.vx
+        if self.y < 20 or self.y > 580:
+            self.vy =- self.vy
         self.set_coords()
         targets_hit = self.hit_targets()
         if targets_hit:
